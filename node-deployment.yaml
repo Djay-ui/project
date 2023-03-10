@@ -16,7 +16,7 @@ spec:
      spec:
          containers:
            - name: appseccoapp
-             image: "swanandd55/appsecco:{{DOCKER_TAG}}"
+             image: "dhananjaytupe748/webapp:{{DOCKER_TAG}}"
   replicas: 1
   selector:
     matchLabels:
