@@ -9,7 +9,7 @@ pipeline{
 	stages{
 		stage('SCM'){
 			steps{
-				git credentialsId: 'github', url: 'https://github.com/Swanandd55/iacsd.git'
+				git credentialsId: 'github', url: 'https://github.com/Djay-ui/project.git'
 			}
 		}
 		stage('Maven Build'){
@@ -19,16 +19,16 @@ pipeline{
 		}
 		stage('Build') {
 			steps{
-				sh 'docker build . -t swanandd55/appsecco:${DOCKER_TAG}'
+				sh 'docker build . -t dhananjaytupe748/webapp:${DOCKER_TAG}'
 			}
 		}
 
 		stage('Login & Push') {
 			steps{
 				withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'DockerHubpwd')]) {
-					sh "docker login -u swanandd55 -p ${DockerHubpwd}"
+					sh "docker login -u dhananjaytupe748 -p ${DockerHubpwd}"
 				}
-					sh 'docker push swanandd55/appsecco:${DOCKER_TAG}'
+					sh 'docker push dhananjaytupe748/webapp:${DOCKER_TAG}'
 			}
 		}
 		
