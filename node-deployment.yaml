@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appsecco-deployment
+  labels:
+     app: appsecco
+     type: front-end
+spec:
+  template:
+     metadata:
+       name: appsecco-pod
+       labels: 
+         app: appsecco
+         type: front-end
+     spec:
+         containers:
+           - name: appseccoapp
+             image: "swanandd55/appsecco:{{DOCKER_TAG}}"
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front-end
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appsecco-service
+spec:
+  selector:
+    app: appsecco
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      targetPort: 3000
+      port: 80
+      nodePort: 30000
