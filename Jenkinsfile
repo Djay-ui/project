@@ -1,8 +1,8 @@
 pipeline{
 	agent any
-	tools {
-  		maven 'maven-3'
-	}
+// 	tools {
+//   		maven 'maven-3'
+// 	}
 	environment {
   		DOCKER_TAG = getVersion()
 	}
@@ -12,11 +12,11 @@ pipeline{
 				git credentialsId: 'github', url: 'https://github.com/Djay-ui/project.git'
 			}
 		}
-		stage('Maven Build'){
-			steps{
-				sh "mvn clean package"
-			}
-		}
+// 		stage('Maven Build'){
+// 			steps{
+// 				sh "mvn clean package"
+// 			}
+// 		}
 		stage('Build') {
 			steps{
 				sh 'docker build . -t dhananjaytupe748/webapp:${DOCKER_TAG}'
