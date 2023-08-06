@@ -9,7 +9,7 @@ pipeline{
 	stages{
 		stage('SCM'){
 			steps{
-				git credentialsId: 'github', url: 'https://github.com/Djay-ui/project.git'
+				git credentialsId: 'git_pass', url: 'https://github.com/Djay-ui/project.git'
 			}
 		}
 // 		stage('Maven Build'){
