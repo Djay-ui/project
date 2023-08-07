@@ -3,9 +3,9 @@ FROM  debian:10
 LABEL maintainer "opsxcq@strm.sh"
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
+ #   apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    debconf-utils && \
+    --no-install-recommends debconf-utils && \
     echo mariadb-server mysql-server/root_password password vulnerables | debconf-set-selections && \
     echo mariadb-server mysql-server/root_password_again password vulnerables | debconf-set-selections && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
