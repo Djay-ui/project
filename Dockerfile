@@ -15,10 +15,9 @@ RUN apt-get update && \
     php-mysql \
     php-pgsql \
     php-pear \
-    php-gd \
-    && \
+    php-gd && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#    rm -rf /var/lib/apt/lists/*
 
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
