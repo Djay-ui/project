@@ -20,7 +20,7 @@ pipeline{
 		stage('Build') {
 			steps{
 				script{
-				sh 'docker build . -t dhananjaytupe748/project_new:${DOCKER_TAG}'
+				sh 'sudo docker build . -t dhananjaytupe748/project_new:${DOCKER_TAG}'
 				}
 			}
 		}
@@ -29,9 +29,9 @@ pipeline{
 			steps{
 				script{
 				withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
-					sh "docker login -u dhananjaytupe748 -p ${dockerhubpass}"
+					sh "sudo docker login -u dhananjaytupe748 -p ${dockerhubpass}"
 				}
-					sh 'docker push dhananjaytupe748/project_new:${DOCKER_TAG}'
+					sh 'sudo docker push dhananjaytupe748/project_new:${DOCKER_TAG}'
 				}
 			}
 		}
