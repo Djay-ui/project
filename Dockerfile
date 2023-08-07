@@ -17,7 +17,7 @@ RUN apt-get update && \
     php-pear \
     php-gd && \
     apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
