@@ -43,13 +43,13 @@ pipeline{
 				sh "./changeTag.sh ${DOCKER_TAG}"
 				sshagent(['kubernetes_client'])
 				{
-					sh 'scp -o StrictHostKeyChecking=no node-deployment.yaml ubuntu@3.94.145.205:/home/ubuntu/'
+					sh 'scp -o StrictHostKeyChecking=no node-deployment.yaml ubuntu@54.210.62.62:/home/ubuntu/'
 					
 					script{
 						try{
-							sh "ssh ubuntu@3.94.145.205 kubectl apply -f ."
+							sh "ssh ubuntu@54.210.62.62 kubectl apply -f ."
 						}catch(error){
-							sh "ssh ubuntu@3.94.145.205 kubectl create -f ."	
+							sh "ssh ubuntu@54.210.62.62 kubectl create -f ."	
 						}
 					}
 				}
