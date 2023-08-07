@@ -8,6 +8,7 @@ RUN apt-get update && \
     --no-install-recommends debconf-utils && \
     echo mariadb-server mysql-server/root_password password vulnerables | debconf-set-selections && \
     echo mariadb-server mysql-server/root_password_again password vulnerables | debconf-set-selections && \
+    apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apache2 \
     mariadb-server \
