@@ -39,7 +39,6 @@ pipeline{
 		
 		stage('Deployment'){
 			steps{
-				script {
 				sh "chmod +x changeTag.sh"
 				sh "./changeTag.sh ${DOCKER_TAG}"
 				sshagent(['kubernetes_client'])
@@ -56,7 +55,7 @@ pipeline{
 				}
 			}
 		}
-		}
+		
 	}
 	post {
 		always {
