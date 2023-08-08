@@ -16,7 +16,7 @@ spec:
      spec:
          containers:
            - name: appseccoapp
-             image: "dhananjaytupe748/project_new:{{DOCKER_TAG}}"
+             image: "dhananjaytupe748/project_new:{${DOCKER_TAG}}"
   replicas: 1
   selector:
     matchLabels:
