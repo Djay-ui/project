@@ -44,6 +44,7 @@ pipeline{
 				sshagent(['kubernetes_client'])
 				{
 					sh 'scp -o StrictHostKeyChecking=no node-deployment.yaml ubuntu@34.239.102.225:/home/ubuntu/'
+					sh 'scp -o StrictHostKeyChecking=no pods.yaml ubuntu@34.239.102.225:/home/ubuntu/'
 					
 					script{
 						try{
