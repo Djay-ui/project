@@ -27,18 +27,14 @@ pipeline{
 
 		stage('Scan') {
 			steps{
-				script{
 				sh -c "trivy image dhananjaytupe748/project_new:${DOCKER_TAG} > report.txt"
-				}
 			}
 		}
 
 		stage('Email') {
 			steps{
-				script{
 				emailext attachmentsPattern: 'report.txt', body: '<p>This an report for the DVWA docker Image</p>', mimeType: 'text/html', recipientProviders: [buildUser(), culprits(), developers(), requestor(), brokenBuildSuspects(), brokenTestsSuspects()], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:', to: 'dhananajaytupe00@gmail.com'
 				}
-			}
 		}
 
 		stage('Login & Push') {
