@@ -27,7 +27,7 @@ pipeline{
 
 		stage('Scan') {
 			steps{
-				sh -c 'trivy image dhananjaytupe748/project_new:${DOCKER_TAG} > report.txt'
+				sh ' trivy image dhananjaytupe748/project_new:${DOCKER_TAG} > report.txt'
 			}
 		}
 
